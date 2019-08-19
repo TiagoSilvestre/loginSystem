@@ -1,18 +1,14 @@
-# Sistema de login em PHP
+# Sistema de login em PHP usando Orientação a objetos
 
-## Inclui, registro de usuarios, login, logout, salt para segurança das senhas no banco de dados,
-funcionalidade remember me, change password
+## Functionalidades
 
+- Registro, Login/Logout, change password
 - Possui grupos de usuários
 - Logar o usuario através de um cookie do navegador(remember password)
-- Proteção contra Csrf, através da geração um token em cada formulário(input hidden), 
-quando ele envia o formulario ele cria um token na sessão e quando recebe o formulário ele verifica se
-os valores que veio do input hidden e o da sessão são iguais.
+- Proteção contra Csrf
 - Validações dos inputs através de classes customizadas
-- Criação de hash na senha utilizando um salt, que também é salvo no banco de dados
-- Criação de uma classe para exibir mensagens
-
-
+- Criação de hash na senha utilizando um salt, para segurança do banco de dados
+- Criação de uma classe para exibir mensagens, flash messages
 
 
 #### Processo de login: 
@@ -34,7 +30,14 @@ Ao entrar no sistema, no init.php, é verificado se o usuário tem um cookie, se
 a algum cookie cadastrado na tabela user_session, ele pega o id e loga o usuário automaticamente.
 
 
-#### Usuario
+#### Proteção contra Csrf
+
+Através da geração um token em cada formulário(input hidden), 
+quando ele envia o formulario ele cria um token na sessão e quando recebe o formulário ele verifica se
+os valores que veio do input hidden e o da sessão são iguais.
+
+
+#### Usuário
 
 Quando instancia um usuario ele verifica se existe a sessao 'user', 
 se existir ele faz um get no usuario e seta true em isLoggedIn. Ou seja, 
