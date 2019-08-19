@@ -1,16 +1,18 @@
 <?php
 
 /** 
- * Essa é a descriçao da classe User
- *
+ * <b>Classe de Usuario</b>
+ * ela manipula varios aspectos, como login, logout
  * @copyright (c) 2019, Tiago Silvestre
  */
 class User {
-    private $_db,
-            $_data,
+    private $_data,
             $_sessionName,
             $_cookieName,
             $_isLoggedIn;
+    
+    /** @var DB */
+    private $_db;
     
     /**
      * Sem parametro: verifica a sessao e se tiver o user seta _isLoggedIn: true  
@@ -21,7 +23,7 @@ class User {
         $this->_db = DB::getInstance();
         $this->_sessionName = Config::get('session/session_name');
         $this->_cookieName = Config::get('remember/cookie_name');
-        
+
 
         if (!$user) {
             if (Session::exists($this->_sessionName)) {
@@ -139,11 +141,6 @@ class User {
             }
         }
         return false;
-    }
-    
-    
-    public function peido() {
-        Cookie::delete($this->_cookieName);
     }
     
     

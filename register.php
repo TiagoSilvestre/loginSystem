@@ -18,7 +18,7 @@ if (Input::exists()) {
             ),
             'password_again' => array(
                 'required' => true,
-                'matches' => 'password'  
+                'matches' => 'password'
             ),
             'name' => array(
                 'required' => true,

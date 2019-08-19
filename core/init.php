@@ -18,18 +18,13 @@ $GLOBALS['config'] = array(
     )
 );
 
-
 spl_autoload_register(function($class){
     require_once 'classes/' . $class . '.php';
 });
 
 require_once 'functions/sanatize.php';
-//echo '-- Valor da sessao:';
-//echo '<pre>';
-//print_r($_SESSION);
-//echo '</pre>';
 
-
+// se o usuario tiver o cookie no navegar ele loga automaticamente
 if (Cookie::exists(Config::get('remember/cookie_name')) && !Session::exists(Config::get('session/session_name'))) {
     // echo 'Entrou no if da Init.php. OU seja, tem somente o cookie da sessao<br>';
     $hash = Cookie::get(Config::get('remember/cookie_name'));
